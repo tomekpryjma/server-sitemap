@@ -40,6 +40,13 @@
             </div>
         </div>
     </div>
+    <div class="col-12 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                @include('_form-site', ['servers' => $servers])
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -56,26 +63,47 @@
                 @foreach ($servers as $key => $server)
 
                     <div class="card">
-                        <div class="card-header" id="server-heading-{{ $key }}">
+                        <div class="card-header p-4" id="server-heading-{{ $key }}">
                             <h5 class="mb-0">
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#server-collapse-{{ $key }}" aria-expanded="{{ $key === 0 ? 'true' : 'false' }}" aria-controls="server-collapse-{{ $key }}">
                                     {{ $server->name }} - ({{ $server->ip_address }})
                                 </button>
                             </h5>
+
+                            <form action="/servers/delete/{{ $server->id }}" method="POST" class="nested-form">
+                                {!! method_field('delete') !!}
+                                {!! csrf_field() !!}
+                                <button class="action delete" type="submit">
+                                    <i data-feather="x"></i>
+                                </button>
+                            </form>
                         </div>
                 
                         <div id="server-collapse-{{ $key }}" class="collapse {{ $key === 0 ? 'show' : '' }}" aria-labelledby="server-heading-{{ $key }}" data-parent="#server-accordion">
                             <div class="card-body">
-                                @include('_form-site', ['serverId' => $server->id])
     
                                 @if (count($server->sites) > 0)
                                     <ul>
     
                                         @foreach ($server->sites as $site)
-                                            <li>{{ $site->name }}</li>
+                                            <li>
+                                                {{ $site->name }}
+
+                                                <form action="/sites/delete/{{ $site->id }}" method="POST" class="nested-form">
+                                                    {!! method_field('delete') !!}
+                                                    {!! csrf_field() !!}
+                                                    <button class="delete action" type="submit">
+                                                        <i data-feather="x"></i>
+                                                    </button>
+                                                </form>
+                                            </li>
                                         @endforeach
     
                                     </ul>
+                                @else
+                                    <strong>
+                                        As of yet, this server doesn't have any sites assigned to it.
+                                    </strong>
                                 @endif
                             </div>
                         </div>
