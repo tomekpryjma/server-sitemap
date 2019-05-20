@@ -28,14 +28,20 @@ Route::get('/servers', 'ServerController@index');
 /**
  * Delete server
  */
-// Route::delete('/server/{id}', function($id) {
+Route::delete('/servers/delete/{id}', 'ServerController@delete');
 
-// });
+
 
 /**
  * Add new site.
  */
 Route::post('/sites/add', 'SiteController@create');
+
+/**
+ * Delete a site from the database.
+ */
+Route::delete('/sites/delete/{id}', 'SiteController@delete');
+
 
 Auth::routes();
 
