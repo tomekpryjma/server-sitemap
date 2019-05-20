@@ -17,7 +17,7 @@ class SiteController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'url' => 'required|max:255',
-            'server_id' => 'required|max:255'
+            'server_id' => 'required|integer'
         ]);
     
         if ($validator->fails()) {
