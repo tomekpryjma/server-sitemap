@@ -17,8 +17,14 @@ class CreateSitesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('url');
-            $table->string('server_id');
+            $table->bigInteger('server_id')->unsigned();
             $table->timestamps();
+        });
+
+        Schema::table('sites', function(Blueprint $table) {
+            $table->foreign('server_id')
+                ->references('id')->on('servers')
+                ->onDelete('cascade');
         });
     }
 
