@@ -48,4 +48,23 @@ class ServerController extends Controller
 
         return redirect('/servers');
     }
+
+    /**
+     * Delete a server from the database.
+     * 
+     * @param int
+     */
+    public function delete($id)
+    {
+        $server = Server::find($id);
+        $deleted = $server->delete();
+
+        if (! $deleted) {
+            return back()
+                ->withInput()
+                ->withErrors(['server_delete_failed' => 'Failed to delete server.']);
+        }
+
+        return redirect('/servers');
+    }
 }
