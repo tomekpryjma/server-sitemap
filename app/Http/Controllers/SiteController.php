@@ -34,4 +34,23 @@ class SiteController extends Controller
     
         return redirect('/servers');
     }
+
+    /**
+     * Delete a site from the database.
+     * 
+     * @param int
+     */
+    public function delete($id)
+    {
+        $site = Site::find($id);
+        $deleted = $site->delete();
+
+        if (! $deleted) {
+            return back()
+                ->withInput()
+                ->withErrors(['site_delete_failed' => 'Failed to delete site.']);
+        }
+
+        return redirect('/servers');
+    }
 }
