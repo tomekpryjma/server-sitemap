@@ -1,0 +1,80 @@
+button {
+    &.action {
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        border: 0;
+        box-shadow: inset 0px 0px 0px 0px transparent,
+                    3px 3px 0px 0px #333;
+        transition: all 0.2s ease 0s;
+        position: relative;
+        top: 0;
+        right: 0;
+        svg {
+            max-height: 20px;
+            width: auto;
+            height: 100%;
+            position: relative;
+            top: -1px;
+        }
+
+        &:hover {
+            top: 1px;
+            right: -1px;
+            box-shadow: inset 0px 0px 0px 0px transparent,
+                        2px 2px 0px 0px #333;
+        }
+        &:focus, &:active {
+            outline: none;
+            border: none;
+            background-color: darken($red, 7%);
+            top: 3px;
+            right: -3px;
+            box-shadow: inset -3px 3px 0px 0px darken($red, 20%),
+                        0px 0px 0px 0px #333;
+        }
+    }
+    &.delete {
+        background-color: $red;
+        svg {
+            stroke: #fff;
+            stroke-width: 3px;
+        }
+    }
+}
+
+.card {
+    border-radius: 0;
+}
+
+.card-header {
+    border-radius: 0;
+    &:first-child {
+        border-radius: 0;
+    }
+    button {
+        border-radius: 0;
+    }
+}
+
+#server-accordion {
+    .card-header {
+        position: relative;
+    }
+    button[data-toggle] {
+        padding-right: 47px;
+        width: 100%;
+        height: 100%;
+        text-align: left;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    form.nested-form {
+        position: absolute;
+        z-index: 2;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
