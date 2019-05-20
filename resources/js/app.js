@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+const feather = require('../../node_modules/feather-icons/dist/feather');
 
 window.Vue = require('vue');
 
@@ -30,3 +31,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+// Feather icons replace via data attr.
+feather.replace();
