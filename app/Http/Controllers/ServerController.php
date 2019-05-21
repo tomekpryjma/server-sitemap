@@ -36,7 +36,7 @@ class ServerController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/servers')
+            return redirect('/')
                 ->withInput()
                 ->withErrors($validator->errors());
         }
@@ -46,7 +46,7 @@ class ServerController extends Controller
         $server->ip_address = $request->ip_address;
         $server->save();
 
-        return redirect('/servers');
+        return redirect('/');
     }
 
     /**
@@ -65,6 +65,6 @@ class ServerController extends Controller
                 ->withErrors(['server_delete_failed' => 'Failed to delete server.']);
         }
 
-        return redirect('/servers');
+        return redirect('/');
     }
 }

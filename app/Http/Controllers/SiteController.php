@@ -15,24 +15,24 @@ class SiteController extends Controller
     public function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
+            'client' => 'required|max:255',
             'url' => 'required|max:255',
             'server_id' => 'required|integer'
         ]);
     
         if ($validator->fails()) {
-            return redirect('/servers')
+            return redirect('/')
                 ->withInput()
                 ->withErrors($validator->errors());
         }
     
         $site = new Site;
-        $site->name = $request->name;
+        $site->client = $request->client;
         $site->url = $request->url;
         $site->server_id = $request->server_id;
         $site->save();
     
-        return redirect('/servers');
+        return redirect('/');
     }
 
     /**
@@ -51,6 +51,6 @@ class SiteController extends Controller
                 ->withErrors(['site_delete_failed' => 'Failed to delete site.']);
         }
 
-        return redirect('/servers');
+        return redirect('/');
     }
 }
