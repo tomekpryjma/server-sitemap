@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "feather-icons": "^4.21.0"
+        "feather-icons": "^4.21.0",
+        "select2": "^4.0.7"
     }
 }

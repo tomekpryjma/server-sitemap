@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('../../node_modules/select2/dist/js/select2');
 const feather = require('../../node_modules/feather-icons/dist/feather');
 
 window.Vue = require('vue');
@@ -34,3 +35,9 @@ const app = new Vue({
 
 // Feather icons replace via data attr.
 feather.replace();
+
+$(document).ready(function() {
+    $('select').select2({
+        width: '100%'
+    });
+});
