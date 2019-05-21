@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class SitesTableSeeder extends Seeder
 {
@@ -11,26 +12,17 @@ class SitesTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('sites')->insert([
-            'name' => 'google site',
-            'url' => 'google.com',
-            'server_id' => 1,
-            'created_at' => NOW(),
-            'updated_at' => NOW()
-        ]);
-        \DB::table('sites')->insert([
-            'name' => 'Ebay site',
-            'url' => 'ebay.com',
-            'server_id' => 1,
-            'created_at' => NOW(),
-            'updated_at' => NOW()
-        ]);
-        \DB::table('sites')->insert([
-            'name' => 'Yahoo',
-            'url' => 'yahoo.com',
-            'server_id' => 2,
-            'created_at' => NOW(),
-            'updated_at' => NOW()
-        ]);
+        $faker = Faker::create();
+        $serverIDs = \DB::table('servers')->pluck('id');
+
+        for ($i = 0; $i < 16; $i++) {
+            \DB::table('sites')->insert([
+                'client' => $faker->company,
+                'url' => $faker->domainName,
+                'server_id' => $faker->randomElement($serverIDs),
+                'created_at' => NOW(),
+                'updated_at' => NOW()
+            ]);
+        }
     }
 }
