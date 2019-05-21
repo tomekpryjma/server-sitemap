@@ -41,3 +41,23 @@ $(document).ready(function() {
         width: '100%'
     });
 });
+
+$('[id*="form-delete-site"]').submit(function(event) {
+    event.preventDefault();
+    var form = $(this);
+    var siteID = form.data('site');
+    var serialisedData = form.serialize();
+    var formCard = form.parent().parent();
+
+    $.ajax({
+        url: '/sites/delete/' + siteID,
+        method: 'post',
+        data: serialisedData,
+        success: function() {
+            formCard.remove();
+        },
+        error: function() {
+            console.error("Could not remove site.");
+        }
+    })
+})
