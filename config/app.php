@@ -228,4 +228,6 @@ return [
 
     ],
 
+    'devpass' => env('DEV_PASS'),
+
 ];
