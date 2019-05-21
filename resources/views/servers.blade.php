@@ -92,7 +92,7 @@
                                                         </button>
                                                     </h5>
         
-                                                    <form action="/sites/delete/{{ $site->id }}" method="POST" class="nested-form">
+                                                    <form action="/sites/delete/{{ $site->id }}" method="POST" class="nested-form" id="form-delete-site-{{ $key }}-{{ $siteKey }}" data-site="{{ $site->id }}">
                                                         {!! method_field('delete') !!}
                                                         {!! csrf_field() !!}
                                                         <button class="delete action" type="submit" title="Delete site">
