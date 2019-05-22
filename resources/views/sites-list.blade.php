@@ -9,7 +9,7 @@
             <h5 class="mb-0">
                 <button class="btn btn-link" data-toggle="collapse" data-target="#site-collapse-{{ $key . '-' . $siteKey }}" aria-expanded="false" aria-controls="site-collapse-{{ $key.  '-' . $siteKey }}">
 
-                    <a href="://{{ $site->url }}" target="_blank" rel="noreferrer noopener" class="site-link d-inline-block" title="View this site">
+                    <a href="http://{{ $site->url }}" target="_blank" rel="noreferrer noopener" class="site-link d-inline-block" title="View this site">
                         {{ $site->url }}
                         <span class="d-inline-block link-icon">
                             <i data-feather="external-link"></i>
