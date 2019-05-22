@@ -50,7 +50,7 @@
         
                         @foreach ($servers as $key => $server)
         
-                            <div class="card">
+                            <div class="card" data-card-for="{{ $server->id }}">
                                 <div class="card-header p-4" id="server-heading-{{ $key }}">
                                     <h5 class="mb-0">
                                         <button class="btn btn-link" data-toggle="collapse" data-target="#server-collapse-{{ $key }}" aria-expanded="{{ $key === 0 ? 'true' : 'false' }}" aria-controls="server-collapse-{{ $key }}">
@@ -61,7 +61,7 @@
                                     </h5>
         
                                     <div class="nested-form">
-                                        <button class="action delete" title="Delete server" data-target="#areYouSureModal" data-label="Server" data-toggle="modal" data-route="/servers/delete/" data-item-id="{{ $server->id }}">
+                                        <button class="action delete" title="Delete server" data-target="#areYouSureModal" data-label="server" data-toggle="modal" data-route="/servers/delete/" data-item-id="{{ $server->id }}" data-name="{{ $server->name }}">
                                             <i data-feather="x"></i>
                                         </button>
                                     </div>

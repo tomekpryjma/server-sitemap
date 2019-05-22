@@ -4,7 +4,7 @@
 
     @foreach ($server->sites as $siteKey => $site)
 
-    <div class="card site-card">
+    <div class="card site-card" data-card-for="{{ $site->id }}">
         <div class="card-header p-4" id="site-heading-{{ $siteKey }}">
             <h5 class="mb-0">
                 <button class="btn btn-link" data-toggle="collapse" data-target="#site-collapse-{{ $key . '-' . $siteKey }}" aria-expanded="false" aria-controls="site-collapse-{{ $key.  '-' . $siteKey }}">
@@ -19,7 +19,7 @@
             </h5>
 
             <div class="nested-form">
-                <button class="delete action" data-target="#areYouSureModal" title="Delete site" data-toggle="modal" data-route="/sites/delete/" data-item-id="{{ $site->id }}">
+                <button class="delete action" data-target="#areYouSureModal" title="Delete site" data-toggle="modal" data-label="site" data-route="/sites/delete/" data-item-id="{{ $site->id }}" data-name="{{ $site->url }}">
                     <i data-feather="x"></i>
                 </button>
             </div>
