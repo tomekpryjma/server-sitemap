@@ -129,7 +129,7 @@ button {
             background-color: darken(#fff, 7%);
             top: 3px;
             right: -3px;
-            box-shadow: inset -3px 3px 0px 0px darken(#fff, 20%),
+            box-shadow: inset 3px 3px 0px 0px darken(#fff, 20%),
                         0px 0px 0px 0px #333;
         }
     }
@@ -141,7 +141,7 @@ button {
         }
         &:focus, &:active {
             background-color: darken($green, 7%);
-            box-shadow: inset -3px 3px 0px 0px darken($green, 20%),
+            box-shadow: inset 3px 3px 0px 0px darken($green, 20%),
                         0px 0px 0px 0px #333;
         }
     }
@@ -153,7 +153,7 @@ button {
         }
         &:focus, &:active {
             background-color: darken($blue, 7%);
-            box-shadow: inset -3px 3px 0px 0px darken($blue, 20%),
+            box-shadow: inset 3px 3px 0px 0px darken($blue, 20%),
                         0px 0px 0px 0px #333;
         }
     }
@@ -168,7 +168,7 @@ button {
         }
         &:focus, &:active {
             background-color: darken($red, 7%);
-            box-shadow: inset -3px 3px 0px 0px darken($red, 20%),
+            box-shadow: inset 3px 3px 0px 0px darken($red, 20%),
                         0px 0px 0px 0px #333;
         }
     }
@@ -312,5 +312,11 @@ button {
     .close {
         opacity: 1;
         color: #fff;
+    }
+    .modal-header, .modal-footer {
+        border: none;
+    }
+    #if-this-is-a-server {
+        display: none;
     }
 }
