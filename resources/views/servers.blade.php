@@ -50,7 +50,7 @@
         
                         @foreach ($servers as $key => $server)
         
-                            <div class="card">
+                            <div class="card" data-card-for="{{ $server->id }}">
                                 <div class="card-header p-4" id="server-heading-{{ $key }}">
                                     <h5 class="mb-0">
                                         <button class="btn btn-link" data-toggle="collapse" data-target="#server-collapse-{{ $key }}" aria-expanded="{{ $key === 0 ? 'true' : 'false' }}" aria-controls="server-collapse-{{ $key }}">
@@ -60,72 +60,16 @@
                                         </button>
                                     </h5>
         
-                                    <form action="/servers/delete/{{ $server->id }}" method="POST" class="nested-form">
-                                        {!! method_field('delete') !!}
-                                        {!! csrf_field() !!}
-                                        <button class="action delete" type="submit" title="Delete server">
+                                    <div class="nested-form">
+                                        <button class="action delete" title="Delete server" data-target="#areYouSureModal" data-label="server" data-toggle="modal" data-route="/servers/delete/" data-item-id="{{ $server->id }}" data-name="{{ $server->name }}">
                                             <i data-feather="x"></i>
                                         </button>
-                                    </form>
+                                    </div>
                                 </div>
                         
                                 <div id="server-collapse-{{ $key }}" class="collapse {{ $key === 0 ? 'show' : '' }}" aria-labelledby="server-heading-{{ $key }}" data-parent="#server-accordion">
                                     <div class="card-body">
-            
-                                        @if (count($server->sites) > 0)
-        
-                                        <div id="site-accordion-{{ $key }}" class="accordion-wrapper">
-            
-                                            @foreach ($server->sites as $siteKey => $site)
-        
-                                            <div class="card site-card">
-                                                <div class="card-header p-4" id="site-heading-{{ $siteKey }}">
-                                                    <h5 class="mb-0">
-                                                        <button class="btn btn-link" data-toggle="collapse" data-target="#site-collapse-{{ $key . '-' . $siteKey }}" aria-expanded="false" aria-controls="site-collapse-{{ $key.  '-' . $siteKey }}">
-        
-                                                            <a href="://{{ $site->url }}" target="_blank" rel="noreferrer noopener" class="site-link d-inline-block" title="View this site">
-                                                                {{ $site->url }}
-                                                                <span class="d-inline-block link-icon">
-                                                                    <i data-feather="external-link"></i>
-                                                                </span>
-                                                            </a>
-                                                        </button>
-                                                    </h5>
-        
-                                                    <form action="/sites/delete/{{ $site->id }}" method="POST" class="nested-form" id="form-delete-site-{{ $key }}-{{ $siteKey }}" data-site="{{ $site->id }}">
-                                                        {!! method_field('delete') !!}
-                                                        {!! csrf_field() !!}
-                                                        <button class="delete action" type="submit" title="Delete site">
-                                                            <i data-feather="x"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-        
-                                                <div id="site-collapse-{{ $key . '-' . $siteKey }}" class="collapse" aria-labelledby="site-heading-{{ $key . '-' . $siteKey }}" data-parent="#site-accordion-{{ $key }}">
-                                                    <div class="m-0 p-4">
-                                                        <h5>
-                                                            <strong>Site details</strong>
-                                                        </h5>
-                                                        <ul class="site-details m-0">
-                                                            @if ($site->client)
-                                                                <li>
-                                                                    <strong>Client: </strong>{{ $site->client }}
-                                                                </li>
-                                                            @endif
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @endforeach
-            
-                                            </div>
-                                        @else
-                                            <p class="m-0 p-2">
-                                                <strong>
-                                                    As of yet, this server doesn't have any sites assigned to it.
-                                                </strong>
-                                            </p>
-                                        @endif
+                                        @include('sites-list')
                                     </div>
                                 </div>
                             </div>
@@ -149,10 +93,5 @@
         </div>
     </div>
 </div>
-
-
-
-
-
 
 @endsection

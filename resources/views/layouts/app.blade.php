@@ -80,5 +80,39 @@
             </div>
         </main>
     </div>
+
+    <div class="modal fade" id="areYouSureModal" tabindex="-1" role="dialog" aria-labelledby="areYouSureModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content bg-red text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold" id="areYouSureModalLongTitle">Are you sure you want to do this?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>You're about to delete <span id="about-to-delete" class="font-weight-bold"></span> permanently!</p>
+
+                    <p>This is a <span id="this-is-a" class="font-weight-bold"></span>.</p>
+
+                    <p id="if-this-is-a-server"></p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <form action="" method="POST" class="modal-form" data-related-id="">
+                        {!! method_field('delete') !!}
+                        {!! csrf_field() !!}
+                        <button class="action delete" type="submit">
+                            <i data-feather="x"></i>
+                            Delete <span id="button-delete-label"></span>
+                        </button>
+                    </form>
+                    <button type="button" class="action do" data-dismiss="modal">
+                        No, forget this!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
