@@ -1,0 +1,29 @@
+.form-control {
+    border-radius: 0;
+}
+.nested-form {
+    button.action {
+        padding: 0;
+        width: 20px;
+        height: 20px;
+        svg {
+            top: -3px;
+        }
+    }
+}
+.select2-container .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 0;
+}
+.select2-container .select2-choice,
+.select2-container .select2-selection--single {
+    height: auto;
+    width: 100%; 
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 100%;
+}
+.select2-container .select2-selection--single .select2-selection__rendered {
+    padding: 5px 15px;
+}
