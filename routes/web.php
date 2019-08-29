@@ -69,6 +69,14 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['prefix' => 'client', 'as' => 'client.'], function() {
         
         /**
+         * Show a index of clients.
+         */
+        Route::get('/all', [
+            'uses' => 'ClientController@index',
+            'as' => 'index'
+        ]);
+
+        /**
          * Show a client's details page.
          */
         Route::get('/{id}', [
