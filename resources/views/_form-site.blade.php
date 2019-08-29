@@ -1,5 +1,5 @@
 <h3 class="mb-3">Add new site</h3>
-<form action="/sites/add" method="POST" id="form-add-site">
+<form action="{{ route('site.add') }}" method="POST" id="form-add-site">
     {{ csrf_field() }}
     <fieldset {{ count($servers) <= 0 ? 'disabled="disabled"' : '' }}>
         <div class="form-row">
