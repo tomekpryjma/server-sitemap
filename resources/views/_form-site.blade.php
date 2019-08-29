@@ -7,7 +7,20 @@
                 <div class="form-row">
                     <div class="col-12">
                         <label for="client" class="control-label">Client <sup>The people we did the site for.</sup></label>
-                        <input type="text" name="client" id="site-client" class="form-control">
+
+                        <select name="client_id" id="client-id">
+                            <option value="" disabled selected>Select one of our clients</option>
+                            
+                            @if (count($clients) > 0)
+
+                                @foreach ($clients as $client)
+                                    <option value="{{ $client->id }}">
+                                        {{ $client->name }}
+                                    </option>
+                                @endforeach
+
+                            @endif
+                        </select>
                     </div>
                     <div class="col-12 mt-4 mb-0">
                         <label for="url" class="control-label">Site URL</label>
