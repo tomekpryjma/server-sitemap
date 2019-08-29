@@ -1,0 +1,40 @@
+.contacts-list-group {
+    border: none;
+}
+
+.card-deck .contact {
+    position: relative;
+    // box-shadow: 2px 2px 20px -13px rgba($black, 0.3);
+    flex: 0 0 100%;
+
+    @include media-breakpoint-up(md) {
+        flex: 0 0 45%;
+    }
+    @include media-breakpoint-up(lg) {
+        flex: 0 0 30%;
+
+        &:hover {
+            .name-tag {
+                transform: translateY(calc(-50% - 5px));
+            }
+        }
+    }
+
+    .name-tag {
+        color: $white;
+        background-color: $blue;
+        transition: transform 0.3s ease 0s;
+        @extend .bordered;
+        box-shadow: none;
+
+        @include media-breakpoint-up(lg) {
+            position: absolute;
+            top: 0;
+            left: 25px;
+            transform: translateY(-50%);
+        }
+        > * {
+            margin: 0;
+        }
+    }
+}

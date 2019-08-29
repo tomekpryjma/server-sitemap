@@ -1,0 +1,18 @@
+.text-capitalise {
+    text-transform: capitalize;
+}
+
+.font-weight-bold {
+    font-weight: 600;
+}
+
+.page-title {
+    margin-top: 30px;
+}
+
+a.action, button.action {
+    padding: 2px;
+    svg {
+        width: 20px;
+    }
+}
