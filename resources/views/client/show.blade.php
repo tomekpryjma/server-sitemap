@@ -60,13 +60,13 @@
                             <ul class="list-group mt-3">
 
                                 <li class="list-group-item">
-                                    <span class="font-weight-bold text-capitalise">Email:</span>
-                                    <a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a>
+                                    <span class="font-weight-bold text-capitalise">Email</span>
+                                    <a href="mailto:{{ $contact->email }}" class="d-block">{{ $contact->email }}</a>
                                 </li>
 
                                 <li class="list-group-item">
-                                    <span class="font-weight-bold text-capitalise">Phone:</span>
-                                    <a href="tel:{{ $contact->phone }}">{{ $contact->phone }}</a>
+                                    <span class="font-weight-bold text-capitalise">Phone</span>
+                                    <a href="tel:{{ $contact->phone }}" class="d-block">{{ $contact->phone }}</a>
                                 </li>
 
                             </ul>
