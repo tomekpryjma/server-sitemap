@@ -36,6 +36,18 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
+                        @auth
+
+                            <li>
+                                <a href="{{ route('server.index') }}" class="p-2">Servers</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('client.index') }}" class="p-2">Clients</a>
+                            </li>
+                            
+                        @endauth
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
