@@ -9,4 +9,7 @@
 
 @import '../../node_modules/select2/src/scss/core.scss';
 
+@import 'mixins.scss';
+@import 'general.scss';
 @import 'servers.scss';
+@import 'client.scss';

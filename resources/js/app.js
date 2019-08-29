@@ -40,6 +40,8 @@ $(document).ready(function() {
     $('select').select2({
         width: '100%'
     });
+
+    $('[title]').tooltip();
 });
 
 $('#areYouSureModal .modal-form').submit(function(event) {
@@ -79,7 +81,7 @@ function handleAreYouSureModal() {
         button = $(e.relatedTarget);
         name = button.data('name');
         itemID = button.data('item-id');
-        route = button.data('route') + itemID;
+        route = button.data('route');
         label = button.data('label');
         ifIsServerDisclaimer = $('#if-this-is-a-server');
         

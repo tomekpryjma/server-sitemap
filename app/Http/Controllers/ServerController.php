@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use \App\Models\Server;
+use \App\Models\Client;
 
 class ServerController extends Controller
 {
@@ -16,10 +17,9 @@ class ServerController extends Controller
     public function index()
     {
         $servers = Server::orderBy('created_at', 'asc')->get();
+        $clients = Client::orderBy('name', 'asc')->get();
 
-        return view('servers', [
-            'servers' => $servers
-        ]);
+        return view('server.index', compact('servers', 'clients'));
     }
 
     /**

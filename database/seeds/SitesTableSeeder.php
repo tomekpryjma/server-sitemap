@@ -14,12 +14,13 @@ class SitesTableSeeder extends Seeder
     {
         $faker = Faker::create();
         $serverIDs = \DB::table('servers')->pluck('id');
+        $clientIDs = \DB::table('clients')->pluck('id');
 
         for ($i = 0; $i < 16; $i++) {
             \DB::table('sites')->insert([
-                'client' => $faker->company,
                 'url' => $faker->domainName,
                 'server_id' => $faker->randomElement($serverIDs),
+                'client_id' => $faker->randomElement($clientIDs),
                 'created_at' => NOW(),
                 'updated_at' => NOW()
             ]);
