@@ -79,7 +79,7 @@ function handleAreYouSureModal() {
         button = $(e.relatedTarget);
         name = button.data('name');
         itemID = button.data('item-id');
-        route = button.data('route') + itemID;
+        route = button.data('route');
         label = button.data('label');
         ifIsServerDisclaimer = $('#if-this-is-a-server');
         
