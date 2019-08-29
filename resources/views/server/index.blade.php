@@ -14,7 +14,7 @@
             <div class="card-body">
                 <h3 class="mb-3">Add new server</h3>
 
-                <form action="/servers/add" method="POST">
+                <form action="{{ route('server.add') }}" method="POST">
                     {{ csrf_field() }}
                     
                     <div class="form-row">
@@ -61,7 +61,7 @@
                                     </h5>
         
                                     <div class="nested-form">
-                                        <button class="action delete" title="Delete server" data-target="#areYouSureModal" data-label="server" data-toggle="modal" data-route="/servers/delete/" data-item-id="{{ $server->id }}" data-name="{{ $server->name }}">
+                                        <button class="action delete" title="Delete server" data-target="#areYouSureModal" data-label="server" data-toggle="modal" data-route="{{ route('server.delete', ['id' => $server->id]) }}" data-item-id="{{ $server->id }}" data-name="{{ $server->name }}">
                                             <i data-feather="x"></i>
                                         </button>
                                     </div>
