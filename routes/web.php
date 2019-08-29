@@ -13,9 +13,6 @@
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
 Route::middleware(['auth'])->group(function () {
     /**
      * Get list of servers
@@ -23,24 +20,60 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', 'ServerController@index');
 
     /**
-     * Add new server
+     * ======== Servers ========
      */
-    Route::post('/servers/add', 'ServerController@create');
+    Route::group(['prefix' => 'server', 'as' => 'server.'], function() {
+
+        /**
+         * Add new server
+         */
+        Route::post('/add', [
+            'uses' => 'ServerController@create',
+            'as' => 'add'
+        ]);
+        
+        /**
+         * Delete server
+         */
+        Route::delete('/delete/{id}', [
+            'uses' => 'ServerController@delete',
+            'as' => 'delete'
+        ]);
+    });
     
     /**
-     * Delete server
+     * ======== Sites ========
      */
-    Route::delete('/servers/delete/{id}', 'ServerController@delete');
-    
-    
-    
+    Route::group(['prefix' => 'site', 'as' => 'site.'], function() {
+
+        /**
+         * Add new site.
+         */
+        Route::post('/add', [
+            'uses' => 'SiteController@create',
+            'as' => 'add'
+        ]); 
+        
+        /**
+         * Delete a site from the database.
+         */
+        Route::delete('/delete/{id}', [
+            'uses' => 'SiteController@delete',
+            'as' => 'delete'
+        ]);
+    });
+
     /**
-     * Add new site.
+     * ======== Clients ========
      */
-    Route::post('/sites/add', 'SiteController@create');
-    
-    /**
-     * Delete a site from the database.
-     */
-    Route::delete('/sites/delete/{id}', 'SiteController@delete');    
+    Route::group(['prefix' => 'client', 'as' => 'client.'], function() {
+        
+        /**
+         * Show a client's details page.
+         */
+        Route::get('/{id}', [
+            'uses' => 'ClientController@show',
+            'as' => 'show'
+        ]);
+    });
 });
