@@ -15,13 +15,18 @@ Auth::routes(['register' => false]);
 
 Route::middleware(['auth'])->group(function () {
     /**
-     * Get list of servers
-     */
-    Route::get('/', 'ServerController@index');
-
-    /**
      * ======== Servers ========
      */
+
+    /**
+     * Get list of servers
+     */
+    Route::get('/', [
+        'uses' => 'ServerController@index',
+        'as' => 'server.index'
+    ]);
+
+
     Route::group(['prefix' => 'server', 'as' => 'server.'], function() {
 
         /**
@@ -67,7 +72,7 @@ Route::middleware(['auth'])->group(function () {
      * ======== Clients ========
      */
     Route::group(['prefix' => 'client', 'as' => 'client.'], function() {
-        
+                
         /**
          * Show a index of clients.
          */
