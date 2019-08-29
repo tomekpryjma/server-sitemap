@@ -28,8 +28,8 @@
                         <td>{{ $client->name }}</td>
                         <td>{{ $client->website }}</td>
                         <td>
-                            <a href="" title="Edit client information" class="action">
-                                <i data-feather="tool"></i>
+                            <a href="{{ route('client.show', ['id' => $client->id]) }}" title="View this client's details" class="action">
+                                <i data-feather="eye"></i>
                             </a>
                         </td>
                     </tr>
