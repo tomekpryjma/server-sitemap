@@ -88,5 +88,13 @@ Route::middleware(['auth'])->group(function () {
             'uses' => 'ClientController@show',
             'as' => 'show'
         ]);
+
+        /**
+         * Store a client.
+         */
+        Route::post('/store', [
+            'uses' => 'ClientController@store',
+            'as' => 'store'
+        ]);
     });
 });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Client;
 
@@ -27,7 +28,23 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'website' => 'url'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('client.index');
+        }
+
+        $client = new Client;
+
+        $client->name = $request->name;
+        $client->contacts = $request->contacts;
+        $client->website = $request->website;
+        $client->notes = $request->notes;
+
+        $client->save();
     }
 
     /**
