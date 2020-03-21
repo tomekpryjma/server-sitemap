@@ -82,4 +82,9 @@ class ClientController extends Controller
     {
         //
     }
+
+    public function addKeyContact(Request $request, $id)
+    {
+        //
+    }
 }
