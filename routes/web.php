@@ -96,5 +96,26 @@ Route::middleware(['auth'])->group(function () {
             'uses' => 'ClientController@store',
             'as' => 'store'
         ]);
+
+        /**
+         * Manage key contacts
+         */
+        Route::group(['prefix' => 'key-contact', 'as' => 'key-contact.'], function() {
+            /**
+             * Add a contact
+             */
+            Route::post('/add/{$id}', [
+                'uses' => 'ClientController@addKeyContact',
+                'as' => 'add'
+            ]);
+
+            /**
+             * Remove a contact
+             */
+            Route::post('/remove/{$id}', [
+                'uses' => 'ClientController@removeKeyContact',
+                'as' => 'remove'
+            ]);
+        });
     });
 });
