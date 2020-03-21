@@ -19,7 +19,7 @@
             </h5>
 
             <div class="nested-form">
-                <button class="delete action" data-target="#areYouSureModal" title="Delete site" data-toggle="modal" data-label="site" data-route="/sites/delete/" data-item-id="{{ $site->id }}" data-name="{{ $site->url }}">
+                <button class="delete action" data-target="#areYouSureModal" title="Delete site" data-toggle="modal" data-label="site" data-route="{{ route('site.delete', ['id' => $site->id]) }}" data-item-id="{{ $site->id }}" data-name="{{ $site->url }}">
                     <i data-feather="x"></i>
                 </button>
             </div>
@@ -33,7 +33,10 @@
                 <ul class="site-details m-0">
                     @if ($site->client)
                         <li>
-                            <strong>Client: </strong>{{ $site->client }}
+                            <strong>Client: </strong>
+                            <a href="{{ route('client.show', ['id' => $site->client->id]) }}">
+                                {{ $site->client->name }}
+                            </a>
                         </li>
                     @endif
                 </ul>

@@ -13,34 +13,88 @@
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
 Route::middleware(['auth'])->group(function () {
+    /**
+     * ======== Servers ========
+     */
+
     /**
      * Get list of servers
      */
-    Route::get('/', 'ServerController@index');
+    Route::get('/', [
+        'uses' => 'ServerController@index',
+        'as' => 'server.index'
+    ]);
+
+
+    Route::group(['prefix' => 'server', 'as' => 'server.'], function() {
+
+        /**
+         * Add new server
+         */
+        Route::post('/add', [
+            'uses' => 'ServerController@create',
+            'as' => 'add'
+        ]);
+        
+        /**
+         * Delete server
+         */
+        Route::delete('/delete/{id}', [
+            'uses' => 'ServerController@delete',
+            'as' => 'delete'
+        ]);
+    });
+    
+    /**
+     * ======== Sites ========
+     */
+    Route::group(['prefix' => 'site', 'as' => 'site.'], function() {
+
+        /**
+         * Add new site.
+         */
+        Route::post('/add', [
+            'uses' => 'SiteController@create',
+            'as' => 'add'
+        ]); 
+        
+        /**
+         * Delete a site from the database.
+         */
+        Route::delete('/delete/{id}', [
+            'uses' => 'SiteController@delete',
+            'as' => 'delete'
+        ]);
+    });
 
     /**
-     * Add new server
+     * ======== Clients ========
      */
-    Route::post('/servers/add', 'ServerController@create');
-    
-    /**
-     * Delete server
-     */
-    Route::delete('/servers/delete/{id}', 'ServerController@delete');
-    
-    
-    
-    /**
-     * Add new site.
-     */
-    Route::post('/sites/add', 'SiteController@create');
-    
-    /**
-     * Delete a site from the database.
-     */
-    Route::delete('/sites/delete/{id}', 'SiteController@delete');    
+    Route::group(['prefix' => 'client', 'as' => 'client.'], function() {
+                
+        /**
+         * Show a index of clients.
+         */
+        Route::get('/all', [
+            'uses' => 'ClientController@index',
+            'as' => 'index'
+        ]);
+
+        /**
+         * Show a client's details page.
+         */
+        Route::get('/{id}', [
+            'uses' => 'ClientController@show',
+            'as' => 'show'
+        ]);
+
+        /**
+         * Store a client.
+         */
+        Route::post('/store', [
+            'uses' => 'ClientController@store',
+            'as' => 'store'
+        ]);
+    });
 });

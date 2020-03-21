@@ -1,0 +1,36 @@
+.contacts-list-group {
+    border: none;
+}
+
+.card-deck .contact {
+    position: relative;
+    flex: 0 0 100%;
+
+    @include media-breakpoint-up(md) {
+        flex: 0 0 45%;
+        transition: transform 0.3s ease 0s;
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
+    @include media-breakpoint-up(lg) {
+        flex: 0 0 30%;
+    }
+
+    .name-tag {
+        color: $white;
+        background-color: $blue;
+        @extend .bordered;
+        box-shadow: inset 0px 2px 0px 0px rgba($white, 0.5);
+
+        @include media-breakpoint-up(lg) {
+            position: absolute;
+            top: 0;
+            left: 25px;
+            transform: translateY(-50%);
+        }
+        > * {
+            margin: 0;
+        }
+    }
+}

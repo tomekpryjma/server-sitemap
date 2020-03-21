@@ -36,8 +36,13 @@ body {
 .text-black {
     color: #000;
 }
+
 .text-white {
     color: #fff;
+}
+
+.text-capitalise {
+    text-transform: capitalize;
 }
 
 .font-weight-bold {
@@ -69,6 +74,17 @@ form {
     font-weight: 600;
     border-radius: 0;
 }
+.page-title {
+    margin-top: 30px;
+}
+
+a.action, button.action {
+    padding: 2px;
+    svg {
+        width: 20px;
+    }
+}
+
 .bordered {
     border-radius: 3px;
     border: 2px solid #000;
