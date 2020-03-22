@@ -8,7 +8,7 @@
                     <div class="col-12">
                         <label for="client" class="control-label">Client <sup>The people we did the site for.</sup></label>
 
-                        <select name="client_id" id="client-id">
+                        <select name="client_id" id="client-id" class="with-search">
                             <option value="" disabled selected>Select one of our clients</option>
                             
                             @if (count($clients) > 0)
@@ -29,7 +29,7 @@
                 </div>
                 <div class="form-row">
                     <div class="col-12 mt-4 mb-0">
-                        <select name="server_id" id="server-id">
+                        <select name="server_id" id="server-id" class="with-search">
                             <option value="" disabled selected>Which server is this site on?</option>
                             
                             @if (count($servers) > 0)
