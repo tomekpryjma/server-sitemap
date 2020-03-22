@@ -3,7 +3,11 @@
 @section('title', 'Viewing client: ' . $client->name)
 
 @section('content')
-    <h1 class="page-title h2">
+
+    <client
+        client="{{ $client }}"/>
+
+    {{-- <h1 class="page-title h2">
         <strong>{{ $client->name }}</strong>'s details
     </h1>
 
@@ -79,4 +83,6 @@
             </section>
         </div>
     </div>
+
+    <add-key-contact/> --}}
 @endsection
