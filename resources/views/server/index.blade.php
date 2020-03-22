@@ -12,7 +12,10 @@
 
     <!-- Create a new server form -->
     <div class="col-12 col-md-6">
-        <div class="card add-new-server-card">
+        <add-server
+            routeAdd="{{ routeRelaxed('server.add') }}"
+            csrfToken="{{ csrf_token() }}"/>
+        {{-- <div class="card add-new-server-card">
             <div class="card-body">
                 <h3 class="mb-3">Add new server</h3>
 
@@ -41,7 +44,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div> --}}
         <!-- Listing of all servers -->
         <div class="row mt-4">
             <div class="col-12">
