@@ -37,7 +37,12 @@ const app = new Vue({
 feather.replace();
 
 $(document).ready(function() {
-    $('select').select2({
+    $('select.no-search').select2({
+        width: '100%',
+        minimumResultsForSearch: Infinity
+    });
+
+    $('select.with-search').select2({
         width: '100%'
     });
 
