@@ -19,6 +19,7 @@ class ServersTableSeeder extends Seeder
                 'id' => $i + 1,
                 'name' => $faker->lastName,
                 'ip_address' => $faker->ipv4,
+                'server_type' => $faker->randomElement(['development', 'dirty', 'production']),
                 'created_at' => NOW(),
                 'updated_at' => NOW()
             ]);
